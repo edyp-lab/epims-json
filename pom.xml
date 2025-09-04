@@ -7,9 +7,6 @@
     <groupId>fr.edyp.epims</groupId>
     <artifactId>eP-Json</artifactId>
     <version>3.7.0-SNAPSHOT</version>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>

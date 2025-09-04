@@ -60,7 +60,7 @@ public class DatabaseVersionJson implements java.io.Serializable {
 
         Integer version = versions.get(classAsString);
         if (version == null) {
-            version = new Integer(1);
+            version = 1;
         } else {
             version = version +1;
         }
@@ -77,7 +77,7 @@ public class DatabaseVersionJson implements java.io.Serializable {
     public Integer getVersion(String classAsString) {
         Integer version = versions.get(classAsString);
         if (version == null) {
-            version = new Integer(0);
+            version = 0;
             versions.put(classAsString, version);
         }
 
