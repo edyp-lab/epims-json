@@ -27,8 +27,8 @@ public class DatabaseVersionJson implements java.io.Serializable {
     private int serverVersion;
 
     public DatabaseVersionJson() {
-        versions = new HashMap();
-        versionUserModifierMap = new HashMap();
+        versions = new HashMap<>();
+        versionUserModifierMap = new HashMap<>();
     }
 
     public int getServerVersion() {

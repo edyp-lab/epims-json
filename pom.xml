@@ -38,6 +38,10 @@
             <source>17</source>
             <target>17</target>
             <useIncrementalCompilation>false</useIncrementalCompilation> <!-- to avoid "endPosTable already set" error -->
+<!--            <compilerArgs>-->
+<!--                <arg>-Xlint:deprecation</arg>-->
+<!--                <arg>-Xlint:unchecked</arg>-->
+<!--            </compilerArgs>-->
         </configuration>
     </plugin>
     </plugins>
