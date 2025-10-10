@@ -19,10 +19,17 @@ package fr.edyp.epims.json;
 
 import java.util.Date;
 
+/**
+ * Information associated with MGF in ePims datastore
+ * This information is file name, size, date and also the acquisition name or study id
+ *
+ *  Used to retrieve mgf information from the server or to add new mgf and associated information to ePims db
+ */
 public class MgfFileInfoJson implements java.io.Serializable {
 
-    private String name;
+    private String fileName;
     private String directoryPath;
+    private String acqName;
     private int studyId;
     private Date date;
     private Double sizeMo;
@@ -31,21 +38,22 @@ public class MgfFileInfoJson implements java.io.Serializable {
     }
 
 
-    public MgfFileInfoJson(String name, String directoryPath, int studyId, Date date, Double sizeMo) {
-        this.name = name;
+    public MgfFileInfoJson(String filename, String acqName, String directoryPath, int studyId, Date date, Double sizeMo) {
+        this.fileName = filename;
         this.directoryPath = directoryPath;
+        this.acqName = acqName;
         this.studyId = studyId;
         this.date = date;
         this.sizeMo = sizeMo;
     }
 
 
-    public String getName() {
-        return this.name;
+    public String getFileName() {
+        return this.fileName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public String getDirectoryPath() {
@@ -56,6 +64,13 @@ public class MgfFileInfoJson implements java.io.Serializable {
         this.directoryPath = directoryPath;
     }
 
+    public String getAcqName() {
+        return acqName;
+    }
+
+    public void setAcqName(String acqName) {
+        this.acqName = acqName;
+    }
 
     public int getStudyId() {
         return this.studyId;

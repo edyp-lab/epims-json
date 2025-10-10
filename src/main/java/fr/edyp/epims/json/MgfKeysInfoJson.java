@@ -6,10 +6,11 @@ import java.io.Serializable;
  * Information to get/set contextual data from ePims
  * This information is the acquisition name, mgfFile name and study id
  *
+ *  Used to exchange information between client - server by GetInfoForMgfFileTask/MGFController
  */
 public class MgfKeysInfoJson implements Serializable {
 
-  private String name;
+  private String fileName;
   private Integer studyId;
   private String acquisitionName;
   private Double acquisitionNameConfidence = 0.0;
@@ -19,18 +20,18 @@ public class MgfKeysInfoJson implements Serializable {
   }
 
   public MgfKeysInfoJson(String name, Integer studyId, String acquisitionName, Double acquisitionNameConfidence) {
-    this.name = name;
+    this.fileName = name;
     this.studyId = studyId;
     this.acquisitionName = acquisitionName;
     this.acquisitionNameConfidence = acquisitionNameConfidence;
   }
 
-  public String getName() {
-    return name;
+  public String getFileName() {
+    return fileName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
   }
 
   public Integer getStudyId() {
