@@ -20,6 +20,7 @@ package fr.edyp.epims.json;
 public class FtpConfigurationJson implements java.io.Serializable {
 
     private String m_host;
+    private Integer m_port;
     private String m_login;
     private String m_password;
 
@@ -31,11 +32,23 @@ public class FtpConfigurationJson implements java.io.Serializable {
     }
 
     public FtpConfigurationJson(String host, String login, String password, String startPath, String[] subDirs) {
+       this(host, null, login, password, startPath, subDirs);
+    }
+
+    public FtpConfigurationJson(String host, Integer port, String login, String password, String startPath, String[] subDirs) {
         m_host = host;
+        m_port = port;
         m_login = login;
         m_password = password;
         m_startPath = startPath;
         m_subDirs = subDirs;
+    }
+
+    public Integer getPort() {
+        return m_port;
+    }
+    public void setPort(Integer port) {
+        this.m_port = port;
     }
 
     public String getHost() {
