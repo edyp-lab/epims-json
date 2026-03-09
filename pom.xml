@@ -6,7 +6,7 @@
 
     <groupId>fr.edyp.epims</groupId>
     <artifactId>eP-Json</artifactId>
-    <version>3.7.1-SNAPSHOT</version>
+    <version>3.7.2-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -28,6 +28,15 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>LICENSE.md</include>
+                </includes>
+                <targetPath>META-INF</targetPath>
+            </resource>
+        </resources>
     <pluginManagement>
     <plugins>
     <plugin>
