@@ -30,6 +30,9 @@ public class AcquisitionJson implements java.io.Serializable {
     private Integer instrumentId;
     private String nature;
     private Float durationMin;
+    private String methodName;
+    private Float injectionVolume;
+    private String vialInformation;
 
     private String instrumentName;
 
@@ -42,6 +45,18 @@ public class AcquisitionJson implements java.io.Serializable {
         this.nature = nature;
         this.durationMin = durationMin;
         this.instrumentName = instrumentName;
+    }
+
+    public AcquisitionJson(Integer id, Integer instrumentId, String nature, Float durationMin, String instrumentName,
+                           String methodName, Float injectionVolume, String vialInformation) {
+        this.id = id;
+        this.instrumentId = instrumentId;
+        this.nature = nature;
+        this.durationMin = durationMin;
+        this.instrumentName = instrumentName;
+        this.methodName = methodName;
+        this.injectionVolume = injectionVolume;
+        this.vialInformation = vialInformation;
     }
 
 
@@ -79,6 +94,30 @@ public class AcquisitionJson implements java.io.Serializable {
 
     public void setDurationMin(Float durationMin) {
         this.durationMin = durationMin;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public Float getInjectionVolume() {
+        return injectionVolume;
+    }
+
+    public void setInjectionVolume(Float injectionVolume) {
+        this.injectionVolume = injectionVolume;
+    }
+
+    public String getVialInformation() {
+        return vialInformation;
+    }
+
+    public void setVialInformation(String vialInformation) {
+        this.vialInformation = vialInformation;
     }
 
     public String getInstrumentName() {
