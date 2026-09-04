@@ -36,6 +36,8 @@ public class SampleJson implements java.io.Serializable , Comparable<SampleJson>
     private Boolean toxicity;
     private Date creationDate;
 
+    private Category category;
+
     private StudyPathJson studyPath;
 
     private ArrayList<ProtocolApplicationJson> orderedProtocolApplications;
@@ -172,6 +174,14 @@ public class SampleJson implements java.io.Serializable , Comparable<SampleJson>
     }
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public StudyPathJson getStudyPath() {

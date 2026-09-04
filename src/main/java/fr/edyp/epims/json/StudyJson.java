@@ -45,7 +45,7 @@ public class StudyJson implements java.io.Serializable, Comparable<StudyJson> {
     private ArrayList<Integer> contactsKey = new ArrayList<Integer>(0);
 
     private String comment;
-
+    private Category category;
 
     public StudyJson() {
     }
@@ -259,6 +259,14 @@ public class StudyJson implements java.io.Serializable, Comparable<StudyJson> {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

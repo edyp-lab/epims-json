@@ -36,6 +36,8 @@ public class AcquisitionJson implements java.io.Serializable {
 
     private String instrumentName;
 
+    private Category category;
+
     public AcquisitionJson() {
     }
 
@@ -126,6 +128,14 @@ public class AcquisitionJson implements java.io.Serializable {
 
     public void setInstrumentName(String instrumentName) {
         this.instrumentName = instrumentName;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public static Nature convertNatureToEnum(String nature) {
