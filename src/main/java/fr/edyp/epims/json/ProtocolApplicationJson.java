@@ -53,6 +53,19 @@ public class ProtocolApplicationJson implements java.io.Serializable, Comparable
         this.acquisitionJson = new AcquisitionJson(acquisitionId, instrumentId, nature, durationMin, null);
     }
 
+    public ProtocolApplicationJson(Integer id, String sampleKey, String sampleActorKey, String actorKey, String name, Date date,
+                                   String comment, Integer studyId, Integer acquisitionId, Integer instrumentId, String nature, Float durationMin, Category category) {
+        this.id = id;
+        this.sampleKey = sampleKey;
+        this.sampleActorKey = sampleActorKey;
+        this.actorKey = actorKey;
+        this.name = name;
+        this.date = date;
+        this.comment = comment;
+        this.studyId = studyId;
+        this.acquisitionJson = new AcquisitionJson(acquisitionId, instrumentId, nature, durationMin, null);
+        this.acquisitionJson.setCategory(category);
+    }
 
     public ProtocolApplicationJson(Integer id, String sampleKey, String sampleActorKey, String actorKey, /*Protocol protocol,*/ String name, Date date,
                                    String comment, /*Separation separation,*/ Integer studyId, AcquisitionJson acquisitionJson, RunRobotJson runRobotJson, AliquotageJson aliquotageJson,  Integer rank) {
