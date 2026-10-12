@@ -81,4 +81,20 @@ public class CellenOneManipJson implements Serializable {
     public void setRuns(ArrayList<CellenOneRunJson> runs) {
         this.runs = runs != null ? runs : new ArrayList<>();
     }
+
+    public ArrayList<CellenOneSample> getSamplesForSource(String source) {
+        ArrayList<CellenOneSample> result = new ArrayList<>();
+        for (CellenOneRunJson run : runs) {
+            result.addAll(run.getSamplesForSource(source));
+        }
+        return result;
+    }
+
+    public ArrayList<CellenOneSample> getSamplesForPlate(String plate) {
+        ArrayList<CellenOneSample> result = new ArrayList<>();
+        for (CellenOneRunJson run : runs) {
+            result.addAll(run.getSamplesForPlate(plate));
+        }
+        return result;
+    }
 }

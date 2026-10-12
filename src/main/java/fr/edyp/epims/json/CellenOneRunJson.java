@@ -35,12 +35,17 @@ public class CellenOneRunJson implements Serializable {
     private ArrayList<String> sources = new ArrayList<>();
     private ArrayList<String> plates = new ArrayList<>();
     private ArrayList<Point> plateSizes = new ArrayList<>();
+    private ArrayList<CellenOneSample> cellenOnePlateSamples = new ArrayList<>();
     private Integer samplesCount;
 
     public CellenOneRunJson() {
     }
 
     public CellenOneRunJson(String name, ArrayList<String> sources, ArrayList<String> plates, ArrayList<Point> plateSizes, Integer samplesCount) {
+        this(name, sources, plates, plateSizes, new ArrayList<>(), samplesCount);
+    }
+
+    public CellenOneRunJson(String name, ArrayList<String> sources, ArrayList<String> plates, ArrayList<Point> plateSizes, ArrayList<CellenOneSample> plateCoordinatesSamples, Integer samplesCount) {
         if (plates != null && plateSizes != null && plates.size() != plateSizes.size()) {
             throw new IllegalArgumentException("Plates and PlateSizes must have the same size");
         }
@@ -48,6 +53,7 @@ public class CellenOneRunJson implements Serializable {
         this.sources = sources != null ? sources : new ArrayList<>();
         this.plates = plates != null ? plates : new ArrayList<>();
         this.plateSizes = plateSizes != null ? plateSizes : new ArrayList<>();
+        this.cellenOnePlateSamples = plateCoordinatesSamples != null ? plateCoordinatesSamples : new ArrayList<>();
         this.samplesCount = samplesCount;
     }
 
@@ -83,6 +89,38 @@ public class CellenOneRunJson implements Serializable {
         this.plateSizes = plateSizes != null ? plateSizes : new ArrayList<>();
     }
 
+    public ArrayList<CellenOneSample> getCellenOnePlateSamples() {
+        return cellenOnePlateSamples;
+    }
+
+    public void setCellenOnePlateSamples(ArrayList<CellenOneSample> cellenOnePlateSamples) {
+        this.cellenOnePlateSamples = cellenOnePlateSamples != null ? cellenOnePlateSamples : new ArrayList<>();
+    }
+
+    public ArrayList<CellenOneSample> getSamplesForSource(String source) {
+        ArrayList<CellenOneSample> result = new ArrayList<>();
+        for (CellenOneSample sample : cellenOnePlateSamples) {
+            if (containsSource(sample, source)) {
+                result.add(sample);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<CellenOneSample> getSamplesForPlate(String plate) {
+        ArrayList<CellenOneSample> result = new ArrayList<>();
+        for (CellenOneSample sample : cellenOnePlateSamples) {
+            if (plate == null ? sample.getPlate() == null : plate.equals(sample.getPlate())) {
+                result.add(sample);
+            }
+        }
+        return result;
+    }
+
+    private boolean containsSource(CellenOneSample sample, String source) {
+        return source == null ? sample.getSource() == null : source.equals(sample.getSource());
+    }
+
     public Integer getSamplesCount() {
         return samplesCount;
     }
@@ -90,4 +128,5 @@ public class CellenOneRunJson implements Serializable {
     public void setSamplesCount(Integer samplesCount) {
         this.samplesCount = samplesCount;
     }
+
 }

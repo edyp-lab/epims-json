@@ -17,8 +17,11 @@
 
 package fr.edyp.epims.json;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class SampleJson implements java.io.Serializable , Comparable<SampleJson> {
 
@@ -41,6 +44,10 @@ public class SampleJson implements java.io.Serializable , Comparable<SampleJson>
     private StudyPathJson studyPath;
 
     private ArrayList<ProtocolApplicationJson> orderedProtocolApplications;
+    private Boolean isRoot = true;
+    private Boolean isFather = false;
+    private String fatherSample;
+    private List<String> sonSamples = new ArrayList<>();
 
 
     public SampleJson() {
@@ -189,6 +196,42 @@ public class SampleJson implements java.io.Serializable , Comparable<SampleJson>
     }
     public void setStudyPath(StudyPathJson studyPath) {
         this.studyPath = studyPath;
+    }
+
+    @JsonProperty("is_root")
+    public Boolean getIsRoot() {
+        return isRoot;
+    }
+
+    @JsonProperty("is_root")
+    public void setIsRoot(Boolean isRoot) {
+        this.isRoot = isRoot;
+    }
+
+    @JsonProperty("is_father")
+    public Boolean getIsFather() {
+        return isFather;
+    }
+
+    @JsonProperty("is_father")
+    public void setIsFather(Boolean isFather) {
+        this.isFather = isFather;
+    }
+
+    public String getFatherSample() {
+        return fatherSample;
+    }
+
+    public void setFatherSample(String fatherSample) {
+        this.fatherSample = fatherSample;
+    }
+
+    public List<String> getSonSamples() {
+        return sonSamples;
+    }
+
+    public void setSonSamples(List<String> sonSamples) {
+        this.sonSamples = sonSamples == null ? new ArrayList<>() : sonSamples;
     }
 
     @Override
