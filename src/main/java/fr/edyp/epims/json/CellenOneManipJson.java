@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 //import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,16 +35,16 @@ public class CellenOneManipJson implements Serializable {
 
     private String name;
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date;
+    private LocalDate creationDate;
     private String information;
     private ArrayList<CellenOneRunJson> runs = new ArrayList<>();
 
     public CellenOneManipJson() {
     }
 
-    public CellenOneManipJson(String name, Date date, String information, ArrayList<CellenOneRunJson> runs) {
+    public CellenOneManipJson(String name, LocalDate date, String information, ArrayList<CellenOneRunJson> runs) {
         this.name = name;
-        this.date = date;
+        this.creationDate = date;
         this.information = information;
         if (runs != null) {
             this.runs = runs;
@@ -58,12 +59,12 @@ public class CellenOneManipJson implements Serializable {
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getDate() {
+        return creationDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(LocalDate date) {
+        this.creationDate = date;
     }
 
     public String getInformation() {
