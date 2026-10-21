@@ -24,7 +24,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * SingleCell CellenOne Manipulation JSON model
@@ -37,7 +41,7 @@ public class CellenOneManipJson implements Serializable {
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDate creationDate;
     private String information;
-    private ArrayList<CellenOneRunJson> runs = new ArrayList<>();
+    private Map<String, CellenOneRunJson> runByName = new HashMap<>();
 
     public CellenOneManipJson() {
     }
@@ -47,7 +51,7 @@ public class CellenOneManipJson implements Serializable {
         this.creationDate = date;
         this.information = information;
         if (runs != null) {
-            this.runs = runs;
+            runByName = runs.stream().collect(Collectors.toMap(CellenOneRunJson::getName, Function.identity()));
         }
     }
 
@@ -75,27 +79,19 @@ public class CellenOneManipJson implements Serializable {
         this.information = information;
     }
 
-    public ArrayList<CellenOneRunJson> getRuns() {
-        return runs;
+    public List<CellenOneRunJson> getRuns() {
+        return new ArrayList<>(runByName.values());
+    }
+
+    public CellenOneRunJson getRun(String runName) {
+        return runByName.get(runName);
     }
 
     public void setRuns(ArrayList<CellenOneRunJson> runs) {
-        this.runs = runs != null ? runs : new ArrayList<>();
+        if (runs != null) {
+            runByName = runs.stream().collect(Collectors.toMap(CellenOneRunJson::getName, Function.identity()));
+        } else
+            runByName = new HashMap<>();
     }
 
-    public ArrayList<CellenOneSample> getSamplesForSource(String source) {
-        ArrayList<CellenOneSample> result = new ArrayList<>();
-        for (CellenOneRunJson run : runs) {
-            result.addAll(run.getSamplesForSource(source));
-        }
-        return result;
-    }
-
-    public ArrayList<CellenOneSample> getSamplesForPlate(String plate) {
-        ArrayList<CellenOneSample> result = new ArrayList<>();
-        for (CellenOneRunJson run : runs) {
-            result.addAll(run.getSamplesForPlate(plate));
-        }
-        return result;
-    }
 }
