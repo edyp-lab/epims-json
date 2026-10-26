@@ -98,14 +98,5 @@ public class CellenOneSample implements Serializable {
             this.imageFilePath = imageFilePath;
         }
 
-        @JsonIgnore
-        public String getImageFile() {
-            return imageFilePath;
-        }
-
-        @JsonIgnore
-        public void setImageFile(String imageFile) {
-            this.imageFilePath = imageFile;
-        }
     }
 }
